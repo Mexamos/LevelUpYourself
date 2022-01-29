@@ -9,6 +9,8 @@ import {
     useColorScheme,
     View,
     Button,
+    Image,
+    TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -50,6 +52,19 @@ const ProfileScreen = ({ navigation, route }) => {
     );
 };
 
+function LogoTitle() {
+    return (
+        <TouchableOpacity
+        onPress={() => alert('This is a button!')}
+        >
+            <Image
+            style={{ width: 25, height: 25 }}
+            source={require('./assets/menu.png')}
+            />
+        </TouchableOpacity>
+    );
+}
+
 
 
 const App: () => Node = () => {
@@ -59,7 +74,16 @@ const App: () => Node = () => {
                 <Stack.Screen
                 name="Home"
                 component={HomeScreen}
-                options={{ title: 'Welcome' }}
+                options={{
+                    headerTitle: props => <LogoTitle {...props} />,
+                    headerRight: () => (
+                        <Button
+                        onPress={() => alert('This is a button!')}
+                        title="Info"
+                        color="grey"
+                        />
+                    ),
+                }}
                 />
                 <Stack.Screen name="Profile" component={ProfileScreen} />
             </Stack.Navigator>
