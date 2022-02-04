@@ -57,7 +57,17 @@ const Drawer = createDrawerNavigator();
 const App: () => Node = () => {
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home">
+            <Drawer.Navigator 
+            initialRouteName="Home"
+            screenOptions={{
+                swipeEnabled: false,
+                headerRight:(props) => {
+                    return (
+                        <Text style={{color: 'black'}}>Hello!</Text>
+                    );
+                },
+            }}
+            >
                 <Drawer.Screen name="Home" component={HomeScreen} />
                 <Drawer.Screen name="Notifications" component={NotificationsScreen} />
             </Drawer.Navigator>
